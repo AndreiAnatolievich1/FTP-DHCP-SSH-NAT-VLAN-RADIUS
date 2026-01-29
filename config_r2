@@ -1,0 +1,11 @@
+`router> en`
+`router# conf t`
+`router(config)# int g0/1` переходим в режим интерфейса
+`router(config-if)# no shutdown ` физически включаем
+`router(config-if)# ip addr 100.100.100.2 255.255.255.252 ` задаём ip адресс шлюза по умолчаннию и маску сети
+`router(config-if)# ex`
+`router(config)# int g0/0 `
+`router(config-if)# no shutdown `
+`router(config-if)# ip addr 200.200.200.1 255.255.255.252 `
+`router(config-if)# ex`
+`router(config)# ip route 0.0.0.0 0.0.0.0 100.100.100.1`
