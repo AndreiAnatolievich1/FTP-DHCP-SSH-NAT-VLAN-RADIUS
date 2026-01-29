@@ -1,7 +1,7 @@
 
 `router> en` <br>
 `router# conf t`<br>
-`router(config)# enable secret Tomil123` **задаём пароль на enable** <br>
+`router(config)# enable secret Tomil123` **задаём пароль на `enable`** <br>
 `router(config)# service password-encryption ` **теперь пароль храниться в хэшированном виде, а не открытом**<br>
 `router(config)# hostname andr `**Изменение имени устройства на "andr, необходимо для настройки SSh**<br>
 `andr(config)# username admin privilege 15 secret Tomil123 `**задаём пользователя с максимальными правами**<br>
