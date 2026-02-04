@@ -12,8 +12,10 @@
 `router1(config-line)# login authentication default` <br>
 `router1(config-line)# transport input ssh` **Разрешение только SSH подключений на VTY линиях** <br>
 `router1(config-line)# en` <br>
+
 `router1(config)#ip domain-name test.local` **Установка доменного имени для устройства. Это необходимо для генерации RSA ключей, которые используются в SSH** <br>
 `(config)#crypto key generate rsa general-keys modulus 2048` **Генерируем ключи шифрования** <br>
+
 `router1(config)# int g0/0` **Переходим в режим `настройки интерфейса`** <br>
 `router1(config-if)# no shutdown` **физически включаем интерфейс** <br>
 `router1(config-if)#ex` <br>
@@ -38,15 +40,19 @@
 `router1(config-subif)# encapsulation dot1Q 5` <br>
 `router1(config-subif)#ip addr 192.168.5.1 255.255.255.252 ` <br>
 `router1(config-subif)#ex` <br>
+
 `router1(config)# access-list 1 permit 192.168.2.0 0.0.0.255` **создаем номерной `лист` доступа и даем разрешение для сети и всех хостов** <br>
 `router1(config)# access-list 1 permit 192.168.3.0 0.0.0.255` <br>
 `router1(config)# int g0/1` <br>
+
 `router1(config-if)# no shutdown` <br>
 `router1(config-if)# ip address 100.100.100.1 255.255.255.252` <br>
 `router1(config-if)# ip nat outside` **Указываем исходящий `интерфейс` где происходит подмена ip** <br>
 `router1(config-if)# ex` <br>
+
 `router1(config)# ip nat inside source list 1 interface G0/1 overload` **включаем nat указывая какой лист доступа использовать и на каком интерфейсе происходит подмена ip и включаем PAT** <br>
 `router1(config)# ip route 0.0.0.0 0.0.0.0 100.100.100.2` **включим маршрутизацию , указав что все `сети находятся за этим адресом`** <br>
+
 `router1(config)#aaa new-model` **задаём новую моедель** <br>
 `router1(config)# radius server MY_RADIUS`  **настраиваенм название сервера, и переходим в режим конфигурации** <br>
 `router1(config-radius-server)# address ipv4 192.168.4.3 auth-port 1645` **указываем ip адрес сервера и порт на `котором будем работать`** <br>
