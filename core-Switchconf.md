@@ -55,4 +55,4 @@
 `core-Switch(config)# ex`<br>
 `core-Switch# copy running-config ftp:`  <br>
 `Address or name of remote host []? 192.168.4.4`   <br>
-`Destination filename []? CoreSwitch_conf`  <br
+`Destination filename []? CoreSwitch_conf`  <br>
